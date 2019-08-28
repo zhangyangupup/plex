@@ -6,7 +6,7 @@ let barList = [
     path: 'home'
   },
   {
-    icon: 'icon-jichukongjiantubiao-gonggongxuanzekuang',
+    icon: 'icon-SQLshenhe',
     remarks: 'success',
     text: '组件测试',
     path: 'components'

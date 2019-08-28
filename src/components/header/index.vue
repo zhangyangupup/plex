@@ -1,6 +1,6 @@
 <template>
   <div class="page-header">
-    <img src="../../assets/images/logo.png"
+    <img src="../../assets/images/aislogo.png"
          alt="logo">
     <p class="name-box">Wcshjui</p>
   </div>
@@ -18,13 +18,15 @@ export default {
   flex-direction row-reverse
   height 100%
   img
-    height 80%
+    height 70%
     position relative
-    top 10%
+    top 15%
     border-radius 50%
     margin 0 20px
-    border 1px solid #aaa
+    // border 1px solid #fff
   .name-box
     height 50px
     line-height 50px
+    font-size 0.9rem
+    font-weight 600
 </style>

@@ -1,6 +1,6 @@
 <template>
   <!--
-
+    主界面
    -->
   <div class="main-page">
     <!-- 左侧·bar -->
@@ -145,7 +145,9 @@ export default {
     .top-bar
       height 50px
       line-height 50px
-      border-bottom 1px solid #eee
+      border-bottom 1px solid #ccc
+      z-index 999
+      box-shadow 1px 1px 3px #aaa
     .content-body
       flex-grow 1
       overflow-x hidden
@@ -155,7 +157,7 @@ export default {
     color #fff
     padding 3px 10px
     border-radius 3px
-    z-index 9999
+    z-index 998
     font-size 0.9rem
     // transition all 0.4s
     pointer-events none
