@@ -51,7 +51,9 @@ export default {
 
   methods: {
     closeMessage () {
+      console.log(this)
       this.show = false
+      this.$el.parentNode.removeChild(this.$el)
     }
   }
 }

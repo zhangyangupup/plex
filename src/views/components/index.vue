@@ -9,7 +9,7 @@
     <ui-button text='toast测试'
                @click.native="toast()" />
     <ui-button text='confirm测试'
-               @click.native="confirm1()" />
+               @click.native="confirm()" />
     <ui-button text='loading测试'
                @click.native="loading()" />
     <ui-button text='message测试'
@@ -32,7 +32,6 @@
 
 <script>
 import UiButton from '../../components/ui/button/button'
-import { setTimeout } from 'timers';
 export default {
   components: {
     UiButton
@@ -46,26 +45,26 @@ export default {
   },
   methods: {
     toast () {
-      this.$toast('这是测试')
+      this.$ui.toast('这是测试', 5000, 'bottom')
     },
-    confirm1 () {
-      this.$confirm.show({
+    confirm () {
+      this.$ui.confirm.show({
         closeText: '关闭',
         sureText: '确认',
         words: '这是提示信息',
-        cancleFun: () => { console.log('没有任何操作') },
+        cancleFun: () => { console.log('没有任何操作'); this.$ui.confirm.close() },
         sureFun: () => { console.log('确认操作') }
       })
     },
     loading () {
       let vm = this
-      this.$loading.show()
+      this.$ui.loading.show()
       setTimeout(() => {
-        vm.$loading.hide()
+        vm.$ui.loading.hide()
       }, 2000)
     },
     message (item) {
-      this.$message.show(item)
+      this.$ui.message.show(item)
     }
   }
 }

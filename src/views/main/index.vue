@@ -10,7 +10,7 @@
              alt="logo">
       </div>
       <ul>
-        <li @click="toast(item)"
+        <li @click="goPage(item)"
             v-for="(item,index) in barList"
             :key='index'>
           <i @mouseover="showToast(item)"
@@ -27,7 +27,10 @@
       </div>
       <!-- content box -->
       <div class="content-body">
-        <router-view />
+        <transition name='fade'
+                    mode="out-in">
+          <router-view />
+        </transition>
       </div>
     </div>
     <p v-if="showLiToast"
@@ -37,6 +40,8 @@
 
 <script>
 import ComHeader from '../../components/header/index'
+import { barList } from '../../data/list'
+
 export default {
   components: {
     ComHeader
@@ -52,56 +57,17 @@ export default {
         cancleFun: () => { console.log('没有任何操作') },
         sureFun: () => { console.log('确认操作') }
       },
-      barList: [
-        {
-          icon: 'icon-jichukongjiantubiao-gonggongxuanzekuang',
-          remarks: 'success',
-          text: '组件测试',
-          path: 'components'
-        },
-        {
-          icon: 'icon-dingdan',
-          remarks: 'error',
-          text: '222',
-          path: ''
-        },
-        {
-          icon: 'icon-shangchuan5',
-          remarks: 'warning',
-          text: '333',
-          path: ''
-        },
-        {
-          icon: 'icon-wangluoxitong',
-          remarks: 'success',
-          text: '444',
-          path: ''
-        },
-        {
-          icon: 'icon-clock-timeout',
-          remarks: 'success',
-          text: '555',
-          path: ''
-        },
-        {
-          icon: 'icon-dengdai',
-          remarks: 'warning',
-          text: '666',
-          path: ''
-        },
-        {
-          icon: 'icon-setting',
-          remarks: 'warning',
-          text: '777',
-          path: ''
-        }
-      ]
+      barList: []
     }
   },
+  mounted () {
+    this.barList = barList
+  },
   methods: {
-    toast (item) {
+    goPage (item) {
+      console.log(item)
       this.$router.push({
-        name: item.name
+        name: item.path
       })
       // this.$toast('assas')
       // this.$confirm.show(this.options)
@@ -132,8 +98,6 @@ export default {
 }
 </script>
 <style lang="stylus">
-$leftBar = #673AB7
-$barWidth = 60px
 .main-page
   width 100vw
   height 100vh
@@ -184,6 +148,7 @@ $barWidth = 60px
       border-bottom 1px solid #eee
     .content-body
       flex-grow 1
+      overflow-x hidden
   .li-item-toast
     background-color rgba(0, 0, 0, 0.8)
     position absolute

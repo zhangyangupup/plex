@@ -10,7 +10,7 @@ export default {
     Main
   },
   mounted () {
-    this.$router.replace({ name: 'components' })
+    // this.$router.replace({ name: 'components' })
   }
 }
 </script>
