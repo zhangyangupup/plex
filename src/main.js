@@ -4,15 +4,13 @@ import router from './router'
 import store from './store'
 import './style/common.styl'
 import './assets/icons/iconfont.css'
-// import toast from './components/ui/toast/toast.js'
-// import confirm from './components/ui/confirm/confirm.js'
-import { toast, confirm, loading, message } from './components/zyPlugins.js'
+import { Xui, Toast, confirm, loading, message } from './components/plugins.js'
 Vue.config.productionTip = false
-Vue.use(toast)
+Vue.use(Xui)
 Vue.use(confirm)
 Vue.use(loading)
 Vue.use(message)
-
+Vue.use(Toast)
 Vue.prototype.comm = false
 new Vue({
   router,

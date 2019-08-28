@@ -42,11 +42,7 @@ export default {
       type: Object,
       default: () => {
         return {
-          closeText: '关闭',
-          sureText: '确认',
-          words: '这是提示信息',
-          cancleFun: () => { console.log('没有任何操作') },
-          sureFun: () => { console.log('确认操作') }
+
         }
       }
     }
