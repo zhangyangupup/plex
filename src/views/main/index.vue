@@ -19,6 +19,10 @@
         </li>
       </ul>
     </div>
+    <pop :show='isShow'
+         @change="change"
+         @choose='chooseThis'
+         :list="popList" />
     <!-- 右侧·内容框 -->
     <div class="right-box">
       <!-- content top bar -->
@@ -40,13 +44,17 @@
 
 <script>
 import ComHeader from '../../components/header/index'
-
+import Pop from '../../components/ui/pop/index'
 export default {
   components: {
-    ComHeader
+    ComHeader,
+    Pop
   },
   data () {
     return {
+      isShow: false,
+      value: '',
+      popList: ['这是选择asas', 'qwrq', '这是cxsc选择3', '这是adqw选择4'],
       showLiToast: false,
       liToast: 'as',
       options: {
@@ -83,10 +91,19 @@ export default {
      * 路由跳转
      */
     goPage (item) {
-      console.log(item)
-      this.$router.push({
-        name: item.path
-      })
+      // console.log(item)
+      // this.$router.push({
+      //   name: item.path
+      // })
+      this.isShow = true
+    },
+    change (show) {
+      debugger
+      this.isShow = show
+    },
+    chooseThis (q) {
+      this.value = q
+      console.log('这是选中的值', q)
     },
     /**
      * 弹框

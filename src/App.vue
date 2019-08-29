@@ -5,12 +5,18 @@
 </template>
 <script>
 import Main from './views/main/index.vue'
+
 export default {
   components: {
     Main
   },
+  data () {
+    return {
+      img: ''
+    }
+  },
   mounted () {
-    this.$router.replace({ name: 'login' })
+    // this.$router.replace({ name: 'login' })
     let url = 'nos/login'
     this.$http.post(url, {
       'id': '11333',

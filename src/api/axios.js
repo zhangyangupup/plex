@@ -4,6 +4,7 @@ const $http = {}
 axios.defaults.baseURL = $config.baseURL
 axios.defaults.timeout = 600000
 axios.defaults.withCredentials = false
+
 $http.post = (url, data) => {
   return axios({
     url: url,
