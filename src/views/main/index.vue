@@ -40,7 +40,6 @@
 
 <script>
 import ComHeader from '../../components/header/index'
-import { barList } from '../../data/list'
 
 export default {
   components: {
@@ -61,26 +60,37 @@ export default {
     }
   },
   mounted () {
-    this.barList = barList
+    this.initPage()
   },
   methods: {
+    /**
+     * 页面初始化
+     */
+    initPage () {
+      // 获取barlist
+      let url = 'nos/listConfig'
+      this.$http.post(url, {
+        'type': 'barList',
+        'queryType': 'query'
+      }).then(res => {
+        console.log(res)
+        this.barList = res.data.data.sort((x, y) => {
+          return x.sort - y.sort
+        })
+      })
+    },
+    /**
+     * 路由跳转
+     */
     goPage (item) {
       console.log(item)
       this.$router.push({
         name: item.path
       })
-      // this.$toast('assas')
-      // this.$confirm.show(this.options)
-      // this.$loading.show()
-      // this.$message.show({
-      //   text: item.icon,
-      //   type: item.remarks
-      // })
-      // setTimeout(() => {
-      //     vm.$confirm.close()
-      //   this.$loading.hide()
-      // }, 2000)
     },
+    /**
+     * 弹框
+     */
     showToast (item) {
       this.showLiToast = true
       this.liToast = item.text
@@ -91,6 +101,9 @@ export default {
         ele.style.left = (e.target.offsetLeft + e.target.offsetWidth + 20) + 'px'
       })
     },
+    /**
+     * 隐藏弹框
+     */
     hideToast () {
       this.showLiToast = false
     }
@@ -101,7 +114,7 @@ export default {
 .main-page
   width 100vw
   height 100vh
-  background #ffffff
+  background #f6f6f6
   display flex
   flex-direction row
   .left-bar
@@ -112,7 +125,7 @@ export default {
     color #fff
     border-top-left-radius 5px
     border-bottom-left-radius 5px
-    z-index 999
+    z-index 596
     .logo-box
       padding 10px 10px
       img
@@ -146,18 +159,19 @@ export default {
       height 50px
       line-height 50px
       border-bottom 1px solid #ccc
-      z-index 999
+      z-index 598
       box-shadow 1px 1px 3px #aaa
     .content-body
       flex-grow 1
       overflow-x hidden
+      padding 10px
   .li-item-toast
     background-color rgba(0, 0, 0, 0.8)
     position absolute
     color #fff
     padding 3px 10px
     border-radius 3px
-    z-index 998
+    z-index 600
     font-size 0.9rem
     // transition all 0.4s
     pointer-events none

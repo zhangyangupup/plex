@@ -1,6 +1,6 @@
 <template>
   <div class="home-page">
-    <h1>qw</h1>
+
   </div>
 </template>
 
