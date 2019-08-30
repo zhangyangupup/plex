@@ -13,6 +13,16 @@ let routes = [
     path: '/login',
     name: 'login',
     component: () => import('../views/login/index.vue')
+  },
+  {
+    path: '/barConfig',
+    name: 'barConfig',
+    component: () => import('../views/bar-config/index.vue')
+  },
+  {
+    path: '/webpack',
+    name: 'webpack',
+    component: () => import('../views/webpack/index.vue')
   }
 ]
 

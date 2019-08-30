@@ -15,12 +15,7 @@ export default {
   props: {
     options: {
       type: Object,
-      default: () => {
-        return {
-          icon: 'icon-Loading1',
-          text: '加载中...'
-        }
-      }
+      default: () => { }
     }
   },
   data () {
@@ -49,21 +44,20 @@ export default {
     transform translate(-50%, -50%)
     i
       margin 0 auto
+      font-size 2.3rem
+      line-height 2.3rem
       display block
-      font-size 2.2rem
-      width 5vw
       text-align center
-      height 5vw
-      line-height 5vw
       color #fff
-      animation loadingKey 1.2s linear infinite
+      animation loadingKey 0.8s linear infinite
     p
       font-size 0.8rem
+      line-height 3rem
       color #2c3e50
       text-align center
 @keyframes loadingKey
   0%
-    transform rotate(0deg)
-  100%
     transform rotate(360deg)
+  100%
+    transform rotate(0deg)
 </style>

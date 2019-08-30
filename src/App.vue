@@ -10,14 +10,7 @@ export default {
     Main
   },
   mounted () {
-    this.$router.replace({ name: 'login' })
-    let url = 'nos/login'
-    this.$http.post(url, {
-      'id': '11333',
-      'passWord': '11111'
-    }).then(res => {
-      console.log(res)
-    })
+    this.$router.replace({ name: 'components' })
   }
 }
 </script>

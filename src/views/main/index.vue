@@ -154,6 +154,7 @@ export default {
   .right-box
     flex-grow 1
     display flex
+    overflow hidden
     flex-direction column
     .top-bar
       height 50px
@@ -164,6 +165,7 @@ export default {
     .content-body
       flex-grow 1
       overflow-x hidden
+      overflow-y hidden
       padding 10px
   .li-item-toast
     background-color rgba(0, 0, 0, 0.8)

@@ -12,12 +12,17 @@
       <div class="cell-box">
         <cell-box v-model='idNumber'
                   placeholder="请输入账户/邮箱/手机"
+                  :showLeftIcon='true'
                   autocomplete='off'
+                  :showLeft='false'
                   name="账户" />
         <cell-box v-model='passWord'
                   placeholder="请输入密码"
                   autocomplete='off'
+                  :showLeftIcon='true'
                   type="password"
+                  leftIcon="icon-lock"
+                  :showLeft='false'
                   name="密码" />
         <div class="words-box">
           <p class="left">
@@ -31,6 +36,11 @@
             </span>
           </p>
         </div>
+        <!-- 确定按钮 -->
+        <div class="submit-btn">
+          <ui-button @click.native="login"
+                     width='100%' />
+        </div>
       </div>
     </div>
   </div>
@@ -38,9 +48,13 @@
 
 <script>
 import CellBox from '../../components/ui/cellBox/index.vue'
+import UiButton from '../../components/ui/button/button.vue'
+
 export default {
   components: {
-    CellBox
+    CellBox,
+    UiButton
+
   },
   data () {
     return {
@@ -48,11 +62,21 @@ export default {
       passWord: ''
     }
   },
-  watch: {
-    wename: function () {
-      console.log(this.wename)
+  methods: {
+    login () {
+      let data = {
+        id: this.idNumber,
+        passWord: this.passWord
+      }
+      this.$http.post('nos/login', data).then(res => {
+        console.log(res)
+        if (res.data.flag === true) {
+          this.$router.push({ name: 'main' })
+        }
+      })
     }
   }
+
 }
 </script>
 
@@ -67,11 +91,12 @@ export default {
   background-color #f8f8f9
   background-image url('https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg')
   .login-box
-    width 30vw
+    width 350px
     margin 0 auto
     position relative
     top 50%
-    transform translate(0%, -100%)
+    padding-bottom 3rem
+    transform translate(0%, -50%)
     .title-box
       display flex
       flex-direction row
@@ -92,15 +117,15 @@ export default {
         padding-left 10px
         letter-spacing 15px
         flex-grow 1
-        transform translateX(-10%)
+        transform translateX(-30%)
     .cell-box
       .ui-cell-box
         margin-top 3rem
       .words-box
+        line-height 1rem
         display flex
         .left, .right
-          font-size 0.8rem
-          // font-weight 600
+          font-size 0.7rem
           flex-grow 1
           color $baseColor
           span
@@ -112,4 +137,7 @@ export default {
           text-align left
         .right
           text-align right
+      .submit-btn
+        padding 2rem 0
+        top 3rem
 </style>

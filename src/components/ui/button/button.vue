@@ -9,8 +9,8 @@
     fuc：事件传递，可用.native
    -->
   <div @click="fuc"
-       :style="btnBG"
-       class="ui-button zy-components">
+       :style="styleS+' '+btnBG"
+       class="ui-button">
     <div class="ui-btn-child">
       <i :style="'color:'+fontColor"
          :class="'iconfont '+iconLeft"></i>
@@ -28,6 +28,10 @@ export default {
       default: ''
     },
     iconRight: {
+      type: String,
+      default: ''
+    },
+    styleS: {
       type: String,
       default: ''
     },
@@ -49,7 +53,7 @@ export default {
     },
     height: {
       type: String,
-      default: '40'
+      default: ''
     },
     fuc: {
       type: Function,
@@ -66,16 +70,15 @@ export default {
   },
   mounted () {
     // 处理背景色与宽度
-    this.btnWidth = `${parseInt(this.width) - 2}`
     this.btnHeight = `${parseInt(this.height) - 2}`
-    this.btnBG = `background:${this.bgColor};width:${this.btnWidth}px;height:${this.btnHeight}px;lineHeight:${this.btnHeight}`
+    this.btnBG = `background:${this.bgColor};height:${this.btnHeight}px;lineHeight:${this.btnHeight}`
   }
 }
 </script>
 <style lang="stylus">
 .ui-button
-  margin 0 10px
-  display inline-block
+  height 40px
+  display block
   overflow hidden
   border-radius 5px
   border 1px solid #fff

@@ -96,6 +96,12 @@ const loading = {
             iconColor: '#fff'
           }
         }
+        if (!options.fontColor) {
+          options.fontColor = '#fff'
+        }
+        if (!options.iconColor) {
+          options.fontColor = '#fff'
+        }
         loadingEl.options = options
         loadingEl.show = true
       },
@@ -123,17 +129,22 @@ const message = {
           options = {
             text: '这是消息组件实例',
             type: 'success',
-            autoClose: false
+            autoClose: true,
+            showIcon: true
           }
         }
         messageEl.show = true
         messageEl.options = options
         // 是否自动关闭
-        if (options.autoClose) {
+        if (options.autoClose === true || options.autoClose === undefined) {
           setTimeout(() => {
             messageEl.show = false
             messageEl.$el.parentNode.removeChild(messageEl.$el)
           }, 4000)
+        }
+        // 是否显示图标
+        if (options.autoClose === undefined) {
+          options.showIcon = true
         }
         return messageEl
       },
